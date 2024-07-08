@@ -7,6 +7,7 @@ package model;
 import database.koneksi;
 import entity.FilmEntity;
 import eror.FilmException;
+import eror.MhsException;
 import event.FilmListener;
 import java.sql.SQLException;
 import services.FilmService;
@@ -102,6 +103,16 @@ public class FilmModel {
         
         }
     }
+    
+    public void fireOnDelete()
+    {
+    if(filmListener!=null)
+        {
+            filmListener.onDelete();
+            
+        
+        }
+    }
     public void insertFilm() throws SQLException, FilmException, ClassNotFoundException
     {
         FilmService trigger= koneksi.getFilmEntity();
@@ -123,4 +134,26 @@ public class FilmModel {
     
     }
     
+    public void deleteFilm() throws SQLException, FilmException, ClassNotFoundException
+    {
+        FilmService trigger = koneksi.getFilmEntity();
+        
+        trigger.deleteFilm(id_film);
+        fireOnDelete();
+    }
+    
 }
+
+//FilmService trigger = koneksi.getFilmEntity();
+//        
+//        FilmEntity ubah = new FilmEntity();
+//        
+//        ubah.setNama_film(nama_film);
+//        ubah.setCover(cover);
+//        ubah.setGenre(genre);
+//        ubah.setNama_sutrada(nama_sutrada);
+//        ubah.setNama_pemain(nama_pemain);
+//        ubah.setTahun(tahun);
+//        
+//        trigger.updateFilm(ubah);
+//        fire

@@ -16,57 +16,55 @@ import services.FilmService;
  *
  * @author ACER
  */
-public class FilmActionImpl implements FilmService{
+public class FilmActionImpl implements FilmService {
+
     private Connection connection;
-    private final String InsertFilm="insert into film(nama_film,genre, cover,nama_sutradara,nama_pemain, tahun) values (?,?,?,?,?,?)";
-    private final String UpdateFilm="update film set nama_film=?,genre=?,cover=?,nama_sutradara=?,nama_pemain=? ,tahun=? where id=?";
-    private final String DeleteFilm="delete from film where id=?";
-    private final String getByKode="select * from film where id=?";
-    private final String getByNama="select * from film where nama=?";
-    private final String selectAll=" select * from film";
-    
+    private final String InsertFilm = "insert into film(nama_film,genre, cover,nama_sutradara,nama_pemain, tahun) values (?,?,?,?,?,?)";
+    private final String UpdateFilm = "update film set nama_film=?,genre=?,cover=?,nama_sutradara=?,nama_pemain=? ,tahun=? where id=?";
+    private final String DeleteFilm = "delete from film where id=?";
+    private final String getByKode = "select * from film where id=?";
+    private final String getByNama = "select * from film where nama=?";
+    private final String selectAll = " select * from film";
+
     public FilmActionImpl(Connection connection) {
         this.connection = connection;
     }
 
     @Override
     public void insertFilm(FilmEntity film) throws FilmException {
-        PreparedStatement statement=null;
+        PreparedStatement statement = null;
         try {
             connection.setAutoCommit(false);
-        statement=connection.prepareStatement(InsertFilm);
-        statement.setString(1, film.getNama_film());
-        statement.setString(2, film.getGenre());
-        statement.setString(3, film.getCover());
-        statement.setString(4, film.getNama_sutrada());
-        statement.setString(5, film.getNama_pemain());
-        statement.setString(6, film.getTahun());
+            statement = connection.prepareStatement(InsertFilm);
+            statement.setString(1, film.getNama_film());
+            statement.setString(2, film.getGenre());
+            statement.setString(3, film.getCover());
+            statement.setString(4, film.getNama_sutrada());
+            statement.setString(5, film.getNama_pemain());
+            statement.setString(6, film.getTahun());
 
-        statement.executeUpdate();
-         connection.commit();
+            statement.executeUpdate();
+            connection.commit();
         } catch (SQLException e1) {
             try {
                 connection.rollback();
             } catch (SQLException ex) {
             }
-        throw  new FilmException(e1.getMessage());
-        }
-        finally
-        {
+            throw new FilmException(e1.getMessage());
+        } finally {
             try {
                 connection.setAutoCommit(true);
             } catch (SQLException ex) {
             }
-            if(statement!=null)
-            {
+            if (statement != null) {
                 try {
                     statement.close();
                 } catch (SQLException e2) {
-                
+
                 }
-            
+
             }
-        
+
         }
     }
 
@@ -77,7 +75,33 @@ public class FilmActionImpl implements FilmService{
 
     @Override
     public void deleteFilm(Integer id) throws FilmException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        PreparedStatement statement = null;
+        try {
+            connection.setAutoCommit(false);
+            statement = connection.prepareStatement(DeleteFilm);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+            connection.commit();
+        } catch (SQLException e1) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+            }
+            throw new FilmException(e1.getMessage());
+        } finally {
+            try {
+                connection.setAutoCommit(true);
+            } catch (SQLException ex) {
+            }
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e2) {
+
+                }
+
+            }
+        }
     }
 
     @Override
@@ -94,5 +118,5 @@ public class FilmActionImpl implements FilmService{
     public List<FilmEntity> SelectAllFilm() throws FilmException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }
