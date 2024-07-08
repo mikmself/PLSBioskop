@@ -159,7 +159,7 @@ public class MhsModel {
     
     }
     
-    public void insertMhs() throws SQLException, MhsException
+    public void insertMhs() throws SQLException, MhsException, ClassNotFoundException
     {
         MhsServices trigger= koneksi.getMhsEntity();
         
@@ -179,7 +179,7 @@ public class MhsModel {
         
     
     }
-     public void updateMhs() throws SQLException, MhsException
+     public void updateMhs() throws SQLException, MhsException, ClassNotFoundException
     {
         MhsServices trigger= koneksi.getMhsEntity();
         
@@ -197,7 +197,7 @@ public class MhsModel {
     
     }
      
-      public void DeleteMhs() throws SQLException, MhsException
+      public void DeleteMhs() throws SQLException, MhsException, ClassNotFoundException
     {
      MhsServices trigger= koneksi.getMhsEntity();
      trigger.deleteMhs(kode);
