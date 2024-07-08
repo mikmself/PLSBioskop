@@ -64,7 +64,35 @@ public class StudioActionImpl implements StudioService {
 
     @Override
     public void UpdateStudio(StudioEntity studio) throws StudioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        PreparedStatement statement = null;
+        try {
+            connection.setAutoCommit(false);
+            statement = connection.prepareStatement(UpdateStudio);
+            statement.setInt(1, studio.getNomor_studio());
+            statement.setInt(2, studio.getId_studio());
+            statement.executeUpdate();
+            connection.commit();
+        } catch (SQLException e1) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                // log error
+            }
+            throw new StudioException(e1.getMessage());
+        } finally {
+            try {
+                connection.setAutoCommit(true);
+            } catch (SQLException ex) {
+                // log error
+            }
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e2) {
+                    // log error
+                }
+            }
+        }
     }
 
     @Override

@@ -46,11 +46,16 @@ public class StudioModel {
             studioListener.OnInsert(studioEntity);
         }
     }
-
-    public void fireOnDelete() {
+    public void fireOnUpdate(StudioEntity studioEntity) {
         if (studioListener != null) {
-            studioListener.onDelete();
+            studioListener.onUpdate(studioEntity);
         }
+    }
+    public void fireOnDelete() throws SQLException, ClassNotFoundException, StudioException {
+        StudioService trigger = koneksi.getStudioEntity();
+
+        trigger.DeleteStudio(id_studio);
+        fireOnDelete();
     }
 
     public void insertStudio() throws SQLException, StudioException, ClassNotFoundException {
@@ -68,5 +73,15 @@ public class StudioModel {
 
         trigger.DeleteStudio(id_studio);
         fireOnDelete();
+    }
+    public void updateStudio() throws SQLException, StudioException, ClassNotFoundException {
+        StudioService trigger = koneksi.getStudioEntity();
+
+        StudioEntity update = new StudioEntity();
+        update.setId_studio(id_studio);
+        update.setNomor_studio(nomor_studio);
+
+        trigger.UpdateStudio(update);
+        fireOnUpdate(update);
     }
 }

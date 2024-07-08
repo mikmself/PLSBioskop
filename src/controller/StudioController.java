@@ -2,7 +2,7 @@ package controller;
 
 import javax.swing.JOptionPane;
 import model.StudioModel;
-import view.StudioView;
+import view.StudioVIew;
 public class StudioController {
     private StudioModel studioModel;
 
@@ -10,13 +10,13 @@ public class StudioController {
         this.studioModel = studioModel;
     }
     
-    public void resetStudio(StudioView studioView){
+    public void resetStudio(StudioVIew studioView){
         studioModel.resetStudio();
     }
     
-    public void onInsert(StudioView studioView){
-        String id = studioView.getT_ID().getText();
-        String nomorStudio = studioView.getT_NomorStudio().getText();
+    public void onInsert(StudioVIew studioView){
+        String id = studioView.getTxtID().getText();
+        String nomorStudio = studioView.getTxtNomor().getText();
         
         if (id.trim().equals("")) {
             JOptionPane.showMessageDialog(studioView, "ID tidak boleh kosong");

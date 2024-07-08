@@ -11,7 +11,7 @@ package view;
 public class RunStudio extends javax.swing.JFrame {
 
     /**
-     * Creates new form RunStudio
+     * Creates new form RunStudioNew
      */
     public RunStudio() {
         initComponents();
@@ -26,30 +26,17 @@ public class RunStudio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        studioVIew1 = new view.StudioVIew();
-        studioVIew2 = new view.StudioVIew();
-        studioVIew3 = new view.StudioVIew();
-        studioVIew4 = new view.StudioVIew();
-        studioVIew5 = new view.StudioVIew();
-        studioVIew6 = new view.StudioVIew();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(studioVIew6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(studioVIew6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
@@ -81,6 +68,7 @@ public class RunStudio extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(RunStudio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -91,11 +79,5 @@ public class RunStudio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private view.StudioVIew studioVIew1;
-    private view.StudioVIew studioVIew2;
-    private view.StudioVIew studioVIew3;
-    private view.StudioVIew studioVIew4;
-    private view.StudioVIew studioVIew5;
-    private view.StudioVIew studioVIew6;
     // End of variables declaration//GEN-END:variables
 }

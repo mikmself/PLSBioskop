@@ -6,10 +6,15 @@
 package view;
 
 import controller.MhsController;
+import database.koneksi;
+import entity.StudioEntity;
 import eror.FilmException;
 import eror.StudioException;
+import java.awt.event.ActionEvent;
 import java.sql.SQLException;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.FilmModel;
 import model.StudioModel;
 import widget.Table;
@@ -24,8 +29,9 @@ public class StudioVIew extends javax.swing.JPanel {
     /**
      * Creates new form MhsView
      */
-    public StudioVIew() {
+    public StudioVIew() throws SQLException, ClassNotFoundException {
         initComponents();
+        refreshTable();
     }
 
     public TextBox getTxtID() {
@@ -95,10 +101,25 @@ public class StudioVIew extends javax.swing.JPanel {
         });
 
         b_reset.setText("RESET");
+        b_reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_resetActionPerformed(evt);
+            }
+        });
 
         b_hapus.setText("HAPUS");
+        b_hapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_hapusActionPerformed(evt);
+            }
+        });
 
         b_rubah.setText("RUBAH");
+        b_rubah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_rubahActionPerformed(evt);
+            }
+        });
 
         b_simpan.setText("SIMPAN");
         b_simpan.addActionListener(new java.awt.event.ActionListener() {
@@ -206,6 +227,97 @@ public class StudioVIew extends javax.swing.JPanel {
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
+
+    private void b_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_resetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_b_resetActionPerformed
+    public void actionPerformed(ActionEvent evt) {
+        // Ambil nilai dari field teks di StudioView
+        Integer id;
+        Integer nomor;
+        try {
+            id = Integer.parseInt(txtID.getText());
+            nomor = Integer.parseInt(txtNomor.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "ID dan Nomor harus berupa angka");
+            return; 
+        }
+        // Buat objek StudioModel
+        StudioModel studioModel = new StudioModel();
+        studioModel.setId_studio(id);        
+        studioModel.setNomor_studio(nomor);
+        try {
+            // Panggil method untuk update ke database
+            studioModel.updateStudio();
+
+            // Jika berhasil, reset field teks di StudioView
+            JOptionPane.showMessageDialog(StudioVIew.this, "Data studio berhasil diubah");
+            studioModel.resetStudio();
+
+            // Refresh tampilan atau operasi lain setelah update berhasil
+            // Misalnya, refresh tabel data studio di StudioVIew
+            refreshTable();
+
+        } catch (SQLException | StudioException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(StudioVIew.this, "Gagal mengubah data studio: " + ex.getMessage());
+        }
+    }
+    private void b_rubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_rubahActionPerformed
+        actionPerformed(evt);
+    }//GEN-LAST:event_b_rubahActionPerformed
+    public void actionPerformedDelete(ActionEvent evt) {
+        // Ambil nilai ID dari field teks di StudioView
+        Integer id;
+        try {
+            id = Integer.parseInt(txtID.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "ID harus berupa angka");
+            return; 
+        }
+        // Buat objek StudioModel
+        StudioModel studioModel = new StudioModel();
+        studioModel.setId_studio(id);        
+        try {
+            // Panggil method untuk hapus dari database
+            studioModel.deleteStudio();
+
+            // Jika berhasil, reset field teks di StudioView
+            JOptionPane.showMessageDialog(StudioVIew.this, "Data studio berhasil dihapus");
+            studioModel.resetStudio();
+
+            // Refresh tampilan atau operasi lain setelah hapus berhasil
+            // Misalnya, refresh tabel data studio di StudioVIew
+            refreshTable();
+
+        } catch (SQLException | StudioException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(StudioVIew.this, "Gagal menghapus data studio: " + ex.getMessage());
+        }
+    }
+    private void b_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_hapusActionPerformed
+        actionPerformedDelete(evt);
+    }//GEN-LAST:event_b_hapusActionPerformed
+    // Di dalam StudioVIew.java
+
+    public void refreshTable() throws SQLException, ClassNotFoundException {
+        try {
+            // Ambil data dari service atau model
+            List<StudioEntity> listStudio = koneksi.getStudioEntity().SelectAllStudio();
+
+            // Konversi ke objek yang bisa dimasukkan ke dalam tabel
+            DefaultTableModel model = (DefaultTableModel) tb_mhs.getModel();
+            model.setRowCount(0); // Kosongkan isi tabel sebelum menambahkan data baru
+
+            // Loop untuk menambahkan data ke tabel
+            for (StudioEntity studio : listStudio) {
+                Object[] row = {studio.getId_studio(), studio.getNomor_studio()};
+                model.addRow(row);
+            }
+        } catch (StudioException ex) {
+            JOptionPane.showMessageDialog(this, "Gagal memuat data studio: " + ex.getMessage());
+        }
+    }
+
+    // Panggil refreshTable() di dalam konstruktor StudioVIew atau event listener yang sesuai
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

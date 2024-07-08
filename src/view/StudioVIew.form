@@ -117,16 +117,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="RESET"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="b_resetActionPerformed"/>
+          </Events>
         </Component>
         <Component class="widget.Button" name="b_hapus">
           <Properties>
             <Property name="text" type="java.lang.String" value="HAPUS"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="b_hapusActionPerformed"/>
+          </Events>
         </Component>
         <Component class="widget.Button" name="b_rubah">
           <Properties>
             <Property name="text" type="java.lang.String" value="RUBAH"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="b_rubahActionPerformed"/>
+          </Events>
         </Component>
         <Component class="widget.Button" name="b_simpan">
           <Properties>
