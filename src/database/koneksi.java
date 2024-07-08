@@ -7,10 +7,12 @@ import java.sql.SQLException;
 import entity.MhsEntity;
 import implement.FilmActionImpl;
 import implement.MhsAksiImpl;
+import implement.StudioActionImpl;
 import java.sql.Connection;
 import java.sql.SQLException;
 import services.FilmService;
 import services.MhsServices;
+import services.StudioService;
 
 /**
  *
@@ -21,7 +23,9 @@ public class koneksi {
     private static  Connection connection;
     //pertemuan 2
     private static MhsServices mhs;
-    private static FilmService film;
+    private static FilmService film;    
+    private static StudioService studio;
+
             
     public static void main(String[] args) {
         try {
@@ -82,5 +86,13 @@ public class koneksi {
      return film;
     
     }
-    
+    public static StudioService getStudioEntity() throws SQLException, ClassNotFoundException
+    {
+        if(studio==null)
+        {
+            studio= new StudioActionImpl(getConnection());
+       
+        }
+        return studio;
+    }
 }
