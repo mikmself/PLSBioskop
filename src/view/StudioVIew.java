@@ -13,6 +13,8 @@ import eror.StudioException;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.FilmModel;
@@ -81,6 +83,7 @@ public class StudioVIew extends javax.swing.JPanel {
 
         label1.setText("ID");
 
+        tb_mhs.setForeground(new java.awt.Color(0, 0, 0));
         tb_mhs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -100,7 +103,7 @@ public class StudioVIew extends javax.swing.JPanel {
             }
         });
 
-        b_reset.setText("RESET");
+        b_reset.setText("REFRESH DATA");
         b_reset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_resetActionPerformed(evt);
@@ -151,7 +154,7 @@ public class StudioVIew extends javax.swing.JPanel {
                 .addComponent(b_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(b_rubah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(b_simpan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(panel1Layout.createSequentialGroup()
                 .addGap(79, 79, 79)
@@ -215,6 +218,13 @@ public class StudioVIew extends javax.swing.JPanel {
             // Jika berhasil, reset field teks di FilmView
             JOptionPane.showMessageDialog(this, "Data film berhasil disimpan");
             studiModel.resetStudio();
+            try {
+                refreshTable();
+            } catch (SQLException ex) {
+                Logger.getLogger(StudioVIew.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(StudioVIew.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             // Refresh tampilan atau operasi lain setelah penyimpanan berhasil
             // Misalnya, refresh tabel data film di FilmView
@@ -229,7 +239,7 @@ public class StudioVIew extends javax.swing.JPanel {
     }//GEN-LAST:event_txtIDActionPerformed
 
     private void b_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_resetActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_b_resetActionPerformed
     public void actionPerformed(ActionEvent evt) {
         // Ambil nilai dari field teks di StudioView

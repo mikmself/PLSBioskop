@@ -51,11 +51,10 @@ public class StudioModel {
             studioListener.onUpdate(studioEntity);
         }
     }
-    public void fireOnDelete() throws SQLException, ClassNotFoundException, StudioException {
-        StudioService trigger = koneksi.getStudioEntity();
-
-        trigger.DeleteStudio(id_studio);
-        fireOnDelete();
+    public void fireOnDelete() {
+        if (studioListener != null) {
+            studioListener.onDelete();  // Kemungkinan terjadi rekursi tak terbatas di sini
+        }
     }
 
     public void insertStudio() throws SQLException, StudioException, ClassNotFoundException {
