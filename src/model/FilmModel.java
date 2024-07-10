@@ -1,22 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import database.koneksi;
 import entity.FilmEntity;
 import eror.FilmException;
-import eror.MhsException;
 import event.FilmListener;
 import java.sql.SQLException;
 import services.FilmService;
 
-/**
- *
- * @author ACER
- */
 public class FilmModel {
+
     private Integer id_film;
     private String nama_film;
     private String cover;
@@ -81,9 +73,8 @@ public class FilmModel {
     public void setTahun(String tahun) {
         this.tahun = tahun;
     }
-    
-    public void resetFilm()
-    {        
+
+    public void resetFilm() {
         setId_film(0);
         setNama_film("");
         setCover("");
@@ -93,67 +84,64 @@ public class FilmModel {
         setTahun("");
 
     }
-    
-    public void fireOnInsert(FilmEntity  filmEntity)
-    {
-    if(filmListener!=null)
-        {
+
+    public void fireOnInsert(FilmEntity filmEntity) {
+        if (filmListener != null) {
             filmListener.OnInsert(filmEntity);
-            
-        
+
         }
     }
-    
-    public void fireOnDelete()
-    {
-    if(filmListener!=null)
-        {
+    public void fireOnUpdate(FilmEntity filmEntity) {
+        if (filmListener != null) {
+            filmListener.onUpdate(filmEntity);
+        }
+    }
+
+    public void fireOnDelete() {
+        if (filmListener != null) {
             filmListener.onDelete();
-            
-        
+
         }
     }
-    public void insertFilm() throws SQLException, FilmException, ClassNotFoundException
-    {
-        FilmService trigger= koneksi.getFilmEntity();
-        
-        FilmEntity tambah= new FilmEntity();
-        
+
+    public void insertFilm() throws SQLException, FilmException, ClassNotFoundException {
+        FilmService trigger = koneksi.getFilmEntity();
+
+        FilmEntity tambah = new FilmEntity();
+
         tambah.setNama_film(nama_film);
         tambah.setCover(cover);
         tambah.setGenre(genre);
         tambah.setNama_sutrada(nama_sutrada);
         tambah.setNama_pemain(nama_pemain);
         tambah.setTahun(tahun);
-        
+
         trigger.insertFilm(tambah);
         fireOnInsert(tambah);
 
-                
-        
-    
     }
-    
-    public void deleteFilm() throws SQLException, FilmException, ClassNotFoundException
-    {
+
+    public void deleteFilm() throws SQLException, FilmException, ClassNotFoundException {
         FilmService trigger = koneksi.getFilmEntity();
-        
+
         trigger.deleteFilm(id_film);
         fireOnDelete();
     }
-    
-}
 
-//FilmService trigger = koneksi.getFilmEntity();
-//        
-//        FilmEntity ubah = new FilmEntity();
-//        
-//        ubah.setNama_film(nama_film);
-//        ubah.setCover(cover);
-//        ubah.setGenre(genre);
-//        ubah.setNama_sutrada(nama_sutrada);
-//        ubah.setNama_pemain(nama_pemain);
-//        ubah.setTahun(tahun);
-//        
-//        trigger.updateFilm(ubah);
-//        fire
+    public void updateFilm() throws SQLException, FilmException, ClassNotFoundException {
+
+        FilmService trigger = koneksi.getFilmEntity();
+        FilmEntity update = new FilmEntity();
+        update.setId_film(id_film);
+        update.setNama_film(nama_film);
+        update.setCover(cover);
+        update.setGenre(genre);
+        update.setNama_sutrada(nama_sutrada);
+        update.setNama_pemain(nama_pemain);
+        update.setTahun(tahun);
+
+        trigger.updateFilm(update);
+        fireOnUpdate(update);
+    }
+
+}

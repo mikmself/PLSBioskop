@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
-import controller.MhsController;
 import database.koneksi;
 import entity.StudioEntity;
-import eror.FilmException;
 import eror.StudioException;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
@@ -17,20 +10,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.FilmModel;
 import model.StudioModel;
 import widget.Table;
 import widget.TextBox;
 
-/**
- *
- * @author User
- */
 public class StudioVIew extends javax.swing.JPanel {
 
-    /**
-     * Creates new form MhsView
-     */
     public StudioVIew() throws SQLException, ClassNotFoundException {
         initComponents();
         refreshTable();

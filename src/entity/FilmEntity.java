@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package entity;
 
 import event.FilmListener;
 
-/**
- *
- * @author ACER
- */
 public class FilmEntity {
     private Integer id_film;
     private String nama_film;
