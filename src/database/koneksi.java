@@ -6,11 +6,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import entity.MhsEntity;
 import implement.FilmActionImpl;
+import implement.JadwalImplement;
 import implement.MhsAksiImpl;
 import implement.StudioActionImpl;
 import java.sql.Connection;
 import java.sql.SQLException;
 import services.FilmService;
+import services.JadwalService;
 import services.MhsServices;
 import services.StudioService;
 
@@ -24,7 +26,9 @@ public class koneksi {
     //pertemuan 2
     private static MhsServices mhs;
     private static FilmService film;    
-    private static StudioService studio;
+    private static StudioService studio;   
+    private static JadwalService jadwal;
+
 
             
     public static void main(String[] args) {
@@ -94,5 +98,14 @@ public class koneksi {
        
         }
         return studio;
+    }
+    public static JadwalService getJadwalEntitiy() throws SQLException, ClassNotFoundException
+    {
+        if(jadwal==null)
+        {
+            jadwal= new JadwalImplement(getConnection());
+       
+        }
+        return jadwal;
     }
 }

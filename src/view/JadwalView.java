@@ -271,9 +271,9 @@ public class JadwalView extends javax.swing.JPanel {
         }
 
         JadwalModel jadwalModel = new JadwalModel();
-        jadwalModel.setId_jadwal(id_jadwal);
-        jadwalModel.setId_film(id_film);
-        jadwalModel.setId_studio(id_studio);
+        jadwalModel.setIdJadwal(id_jadwal);
+        jadwalModel.setIdFilm(id_film);
+        jadwalModel.setIdStudio(id_studio);
         jadwalModel.setTanggal(tanggal);
         jadwalModel.setJam(jam);
 
@@ -292,14 +292,14 @@ public class JadwalView extends javax.swing.JPanel {
     }//GEN-LAST:event_b_simpanActionPerformed
     public void refreshTable() throws SQLException, ClassNotFoundException {
         try {
-            List<JadwalEntity> listJadwal = koneksi.getJadwalEntity().SelectAllJadwal();
+            List<JadwalEntity> listJadwal = koneksi.getJadwalEntitiy().SelectAllJadwal();
 
             DefaultTableModel model = (DefaultTableModel) tb_jadwal.getModel();
             model.setColumnIdentifiers(new Object[]{"ID Jadwal", "ID Film", "ID Studio", "Tanggal", "Jam"});
             model.setRowCount(0);
 
             for (JadwalEntity jadwal : listJadwal) {
-                Object[] row = {jadwal.getId_jadwal(), jadwal.getId_film(), jadwal.getId_studio(), jadwal.getTanggal(), jadwal.getJam()};
+                Object[] row = {jadwal.getIdJadwal(), jadwal.getIdFilm(), jadwal.getIdStudio(), jadwal.getTanggal(), jadwal.getJam()};
                 model.addRow(row);
             }
         } catch (JadwalException ex) {
@@ -329,9 +329,9 @@ public class JadwalView extends javax.swing.JPanel {
         }
         // Buat objek JadwalModel
         JadwalModel jadwalModel = new JadwalModel();
-        jadwalModel.setId_jadwal(id_jadwal);
-        jadwalModel.setId_film(id_film);
-        jadwalModel.setId_studio(id_studio);
+        jadwalModel.setIdJadwal(id_jadwal);
+        jadwalModel.setIdFilm(id_film);
+        jadwalModel.setIdStudio(id_studio);
         jadwalModel.setTanggal(tanggal);
         jadwalModel.setJam(jam);
         try {
@@ -362,7 +362,7 @@ public class JadwalView extends javax.swing.JPanel {
         }
         // Buat objek JadwalModel
         JadwalModel jadwalModel = new JadwalModel();
-        jadwalModel.setId_jadwal(id_jadwal);
+        jadwalModel.setIdJadwal(id_jadwal);
         try {
             // Panggil method untuk hapus dari database
             jadwalModel.deleteJadwal();
