@@ -27,7 +27,13 @@ public class RunMhs extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        filmView2 = new view.FilmView();
+        try {
+            filmView2 = new view.FilmView();
+        } catch (java.sql.SQLException e1) {
+            e1.printStackTrace();
+        } catch (java.lang.ClassNotFoundException e2) {
+            e2.printStackTrace();
+        }
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().add(filmView2, java.awt.BorderLayout.CENTER);
