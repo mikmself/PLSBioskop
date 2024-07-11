@@ -12,14 +12,16 @@ import widget.TextBox;
  *
  * @author User
  */
+
 public class LoginView extends javax.swing.JPanel {
+
     // Deklarasi komponen
     private final UserController userController;
-    
+
     // Konstruktor
     public LoginView() {
         initComponents();
-        userController = new  UserController(this);
+        userController = new UserController(this);
     }
 
     // Getter untuk mengambil teks dari bidang email
@@ -31,7 +33,6 @@ public class LoginView extends javax.swing.JPanel {
     public TextBox getTxtPassword() {
         return txtPassword;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -133,7 +134,8 @@ public class LoginView extends javax.swing.JPanel {
         // TODO add your handling code here:
         userController.login();
     }//GEN-LAST:event_b_loginActionPerformed
-
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button b_login;

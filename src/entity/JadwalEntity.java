@@ -2,14 +2,14 @@ package entity;
 
 public class JadwalEntity {
     Integer idJadwal;
-    Integer IdFilm;
+    String IdFilm;
     Integer IdStudio;
     String tanggal;
     String jam;
     public JadwalEntity(){
         
     }
-    public JadwalEntity(Integer idJadwal, Integer IdFilm, Integer IdStudio, String tanggal, String jam) {
+    public JadwalEntity(Integer idJadwal, String IdFilm, Integer IdStudio, String tanggal, String jam) {
         this.idJadwal = idJadwal;
         this.IdFilm = IdFilm;
         this.IdStudio = IdStudio;
@@ -25,11 +25,11 @@ public class JadwalEntity {
         this.idJadwal = idJadwal;
     }
 
-    public Integer getIdFilm() {
+    public String getIdFilm() {
         return IdFilm;
     }
 
-    public void setIdFilm(Integer IdFilm) {
+    public void setIdFilm(String IdFilm) {
         this.IdFilm = IdFilm;
     }
 

@@ -19,4 +19,7 @@ public interface UserService {
     public void DeleteUser(Integer id) throws UserException;
         
     public List<UserEntity> SelectAllUser() throws UserException;
+    
+    public void findUser(UserEntity user) throws UserException;
+    
 }

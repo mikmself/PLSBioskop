@@ -48,7 +48,7 @@ public class JadwalController {
 
                 JadwalModel jadwalModel = new JadwalModel();
                 jadwalModel.setIdJadwal(idJadwalInt);
-                jadwalModel.setIdFilm(idFilmInt);
+                jadwalModel.setIdFilm(idFilm);
                 jadwalModel.setIdStudio(idStudioInt);
                 jadwalModel.setTanggal(tanggal);
                 jadwalModel.setJam(jam);

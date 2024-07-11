@@ -26,7 +26,7 @@ public class JadwalImplement implements JadwalService {
     private final String DeleteJadwal = "DELETE FROM jadwal WHERE id_jadwal=?";
     private final String getNamaFilm = "SELECT * FROM film WHERE id_film=?";
     private final String getNomorStudio = "SELECT * FROM studio WHERE id_studio=?";
-    private final String selectAll = "SELECT * FROM jadwal";
+    private final String selectAll = "SELECT jadwal.id_jadwal, film.nama_film, studio.nomor_studio, jadwal.tanggal, jadwal.jam FROM jadwal JOIN film ON jadwal.id_film = film.id_film JOIN studio ON jadwal.id_studio = studio.id_studio;";
 
     public JadwalImplement(Connection connection) {
         this.connection = connection;
@@ -38,7 +38,7 @@ public class JadwalImplement implements JadwalService {
         try {
             connection.setAutoCommit(false);
             statement = connection.prepareStatement(InsertJadwal);
-            statement.setInt(1, Jadwal.getIdFilm());
+            statement.setString(1, Jadwal.getIdFilm());
             statement.setInt(2, Jadwal.getIdStudio());
             statement.setString(3, Jadwal.getTanggal());
             statement.setString(4, Jadwal.getJam());
@@ -73,7 +73,7 @@ public class JadwalImplement implements JadwalService {
         try {
             connection.setAutoCommit(false);
             statement = connection.prepareStatement(UpdateJadwal);
-            statement.setInt(1, Jadwal.getIdFilm());
+            statement.setString(1, Jadwal.getIdFilm());
             statement.setInt(2, Jadwal.getIdJadwal());
             statement.setString(3, Jadwal.getTanggal());
             statement.setString(4, Jadwal.getJam());
@@ -156,8 +156,8 @@ public class JadwalImplement implements JadwalService {
             while (resultSet.next()) {
                 JadwalEntity jadwal = new JadwalEntity();
                 jadwal.setIdJadwal(resultSet.getInt("id_jadwal"));
-                jadwal.setIdFilm(resultSet.getInt("id_film"));
-                jadwal.setIdStudio(resultSet.getInt("id_studio"));
+                jadwal.setIdFilm(resultSet.getString("nama_film"));
+                jadwal.setIdStudio(resultSet.getInt("nomor_studio"));
                 jadwal.setTanggal(resultSet.getString("tanggal"));
                 jadwal.setJam(resultSet.getString("jam"));
                 list.add(jadwal);

@@ -257,11 +257,11 @@ public class JadwalView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void b_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_simpanActionPerformed
-        Integer id_jadwal, id_film, id_studio;
-        String tanggal, jam;
+        Integer id_jadwal, id_studio;
+        String tanggal, jam, id_film;
         try {
             id_jadwal = Integer.parseInt(txt_id_jadwal.getText());
-            id_film = Integer.parseInt(txt_id_film.getText());
+            id_film = txt_id_film.getText();
             id_studio = Integer.parseInt(txt_id_studio.getText());
             tanggal = txt_tanggal.getText();
             jam = txt_jam.getText();
@@ -315,11 +315,11 @@ public class JadwalView extends javax.swing.JPanel {
     }//GEN-LAST:event_b_resetActionPerformed
     public void actionPerformed(ActionEvent evt) {
         // Ambil nilai dari field teks di JadwalView
-        Integer id_jadwal, id_film, id_studio;
-        String tanggal, jam;
+        Integer id_jadwal, id_studio;
+        String tanggal, jam, id_film;
         try {
             id_jadwal = Integer.parseInt(txt_id_jadwal.getText());
-            id_film = Integer.parseInt(txt_id_film.getText());
+            id_film = txt_id_film.getText();
             id_studio = Integer.parseInt(txt_id_studio.getText());
             tanggal = txt_tanggal.getText();
             jam = txt_jam.getText();

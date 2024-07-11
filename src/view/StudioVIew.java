@@ -63,6 +63,18 @@ public class StudioVIew extends javax.swing.JPanel {
         b_simpan = new widget.Button();
         txtNomor = new widget.TextBox();
         label8 = new widget.Label();
+        jPanel1 = new javax.swing.JPanel();
+        panel2 = new widget.Panel();
+        label2 = new widget.Label();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tb_mhs1 = new widget.Table();
+        txtID1 = new widget.TextBox();
+        b_reset1 = new widget.Button();
+        b_hapus1 = new widget.Button();
+        b_rubah1 = new widget.Button();
+        b_simpan1 = new widget.Button();
+        txtNomor1 = new widget.TextBox();
+        label9 = new widget.Label();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -171,10 +183,124 @@ public class StudioVIew extends javax.swing.JPanel {
                     .addComponent(b_hapus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(b_rubah, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(b_simpan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(panel1, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        label2.setText("ID");
+
+        tb_mhs1.setForeground(new java.awt.Color(0, 0, 0));
+        tb_mhs1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tb_mhs1);
+
+        txtID1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtID1ActionPerformed(evt);
+            }
+        });
+
+        b_reset1.setText("REFRESH DATA");
+        b_reset1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_reset1ActionPerformed(evt);
+            }
+        });
+
+        b_hapus1.setText("HAPUS");
+        b_hapus1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_hapus1ActionPerformed(evt);
+            }
+        });
+
+        b_rubah1.setText("RUBAH");
+        b_rubah1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_rubah1ActionPerformed(evt);
+            }
+        });
+
+        b_simpan1.setText("SIMPAN");
+        b_simpan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_simpan1ActionPerformed(evt);
+            }
+        });
+
+        txtNomor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomor1ActionPerformed(evt);
+            }
+        });
+
+        label9.setText("Nomr");
+
+        javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
+        panel2.setLayout(panel2Layout);
+        panel2Layout.setHorizontalGroup(
+            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel2Layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(txtID1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(109, 109, 109)
+                .addComponent(b_reset1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(b_hapus1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(b_rubah1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(b_simpan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panel2Layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtNomor1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
+        );
+        panel2Layout.setVerticalGroup(
+            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNomor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(78, 78, 78)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(b_reset1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(b_hapus1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(b_rubah1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(b_simpan1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(105, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(panel2, java.awt.BorderLayout.CENTER);
+
+        add(jPanel1, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNomorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomorActionPerformed
@@ -291,6 +417,30 @@ public class StudioVIew extends javax.swing.JPanel {
     private void b_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_hapusActionPerformed
         actionPerformedDelete(evt);
     }//GEN-LAST:event_b_hapusActionPerformed
+
+    private void txtID1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtID1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtID1ActionPerformed
+
+    private void b_reset1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_reset1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_b_reset1ActionPerformed
+
+    private void b_hapus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_hapus1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_b_hapus1ActionPerformed
+
+    private void b_rubah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_rubah1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_b_rubah1ActionPerformed
+
+    private void b_simpan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_simpan1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_b_simpan1ActionPerformed
+
+    private void txtNomor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomor1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomor1ActionPerformed
     // Di dalam StudioVIew.java
 
     public void refreshTable() throws SQLException, ClassNotFoundException {
@@ -317,15 +467,27 @@ public class StudioVIew extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button b_hapus;
+    private widget.Button b_hapus1;
     private widget.Button b_reset;
+    private widget.Button b_reset1;
     private widget.Button b_rubah;
+    private widget.Button b_rubah1;
     private widget.Button b_simpan;
+    private widget.Button b_simpan1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private widget.Label label1;
+    private widget.Label label2;
     private widget.Label label8;
+    private widget.Label label9;
     private widget.Panel panel1;
+    private widget.Panel panel2;
     private widget.Table tb_mhs;
+    private widget.Table tb_mhs1;
     private widget.TextBox txtID;
+    private widget.TextBox txtID1;
     private widget.TextBox txtNomor;
+    private widget.TextBox txtNomor1;
     // End of variables declaration//GEN-END:variables
 }

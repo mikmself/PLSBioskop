@@ -16,10 +16,13 @@ public class FilmView extends javax.swing.JPanel {
 
     private TableFilm tabelModel;
     private FilmService filmService;
+    
 
     public FilmView() throws SQLException, ClassNotFoundException {
         initComponents();
         refreshTable();
+        koneksi.getConnection();
+        
     }
 
     public TextBox getT_Tahun() {

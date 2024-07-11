@@ -7,6 +7,7 @@ import view.LoginView;
 
 import javax.swing.JOptionPane;
 import java.util.List;
+import view.Dashboard;
 
 public class UserController {
     private UserActionImpl userAction;
@@ -59,6 +60,8 @@ public class UserController {
                                    .orElse(null);
             if (user != null) {
                 JOptionPane.showMessageDialog(loginView, "Login berhasil!");
+                Dashboard dashboard = new Dashboard();
+                dashboard.setVisible(true);
                 // Lanjutkan ke bagian aplikasi berikutnya
             } else {
                 JOptionPane.showMessageDialog(loginView, "Email atau password salah!");

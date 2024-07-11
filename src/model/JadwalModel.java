@@ -17,7 +17,7 @@ import services.JadwalService;
  */
 public class JadwalModel {
     Integer idJadwal;
-    Integer IdFilm;
+    String IdFilm;
     Integer IdStudio;
     String tanggal;
     String jam;
@@ -34,11 +34,11 @@ public class JadwalModel {
         this.idJadwal = idJadwal;
     }
 
-    public Integer getIdFilm() {
+    public String getIdFilm() {
         return IdFilm;
     }
 
-    public void setIdFilm(Integer IdFilm) {
+    public void setIdFilm(String IdFilm) {
         this.IdFilm = IdFilm;
     }
 
@@ -66,7 +66,7 @@ public class JadwalModel {
         this.jam = jam;
     }
 
-    public JadwalModel(Integer idJadwal, Integer IdFilm, Integer IdStudio, String tanggal, String jam) {
+    public JadwalModel(Integer idJadwal, String IdFilm, Integer IdStudio, String tanggal, String jam) {
         this.idJadwal = idJadwal;
         this.IdFilm = IdFilm;
         this.IdStudio = IdStudio;
@@ -101,7 +101,7 @@ public class JadwalModel {
     
     public void resetJadwal() {
         setIdJadwal(0);
-        setIdFilm(0);
+        setIdFilm("");
         setIdStudio(0);
         setTanggal("");
         setJam("");
